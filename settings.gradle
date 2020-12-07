@@ -1,0 +1,3 @@
+include ':smartlayout'
+include ':app'
+rootProject.name = "SmartLayoutDemo"
