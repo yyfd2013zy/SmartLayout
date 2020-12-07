@@ -1,4 +1,6 @@
-package com.broadvideo.smartlayout.data;
+package com.broadvideo.smartlayout.data.bundle;
+
+import com.broadvideo.smartlayout.data.zone.Zones;
 
 import java.io.Serializable;
 import java.util.ArrayList;

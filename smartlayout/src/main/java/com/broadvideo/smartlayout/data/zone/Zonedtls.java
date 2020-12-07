@@ -1,4 +1,4 @@
-package com.broadvideo.smartlayout.data;
+package com.broadvideo.smartlayout.data.zone;
 
 /**
  * Created by vinda on 2018/7/9.

@@ -1,8 +1,7 @@
 package com.broadvideo.smartlayout.dispatcher
 
 import android.content.Context
-import com.broadvideo.smartlayout.data.BundleJsonModule
-import com.broadvideo.smartlayout.listener.DispatcherListener
+import com.broadvideo.smartlayout.data.bundle.BundleJsonModule
 import com.broadvideo.smartlayout.nowPlayerBundleIds
 import com.broadvideo.smartlayout.nowPlayerBundleJsons
 import com.broadvideo.smartlayout.schedulesWithTime
@@ -16,7 +15,7 @@ import com.broadvideo.smartlayout.utils.readLocalJson
  *  Created by Vinda on 2020/11/13
  *  Copyright © 2020年 BroadVideo. All rights reserved.
  *
- *  Describe:BroadVideo项目中使用到的节目调度器
+ *  Describe:BroadVideo项目中使用到的节目调度器,默认节目调度器
  */
 class CommonScheduleDispatcher constructor(context: Context) : BaseDispatcher() {
     val TAG = "CommonScheduleDispatcher"

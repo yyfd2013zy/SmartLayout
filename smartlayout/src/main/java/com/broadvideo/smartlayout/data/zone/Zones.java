@@ -1,4 +1,4 @@
-package com.broadvideo.smartlayout.data;
+package com.broadvideo.smartlayout.data.zone;
 
 import java.util.ArrayList;
 

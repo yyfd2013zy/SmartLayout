@@ -1,6 +1,6 @@
 package com.broadvideo.smartlayout.listener
 
-import com.broadvideo.smartlayout.data.BundleJsonModule
+import com.broadvideo.smartlayout.data.bundle.BundleJsonModule
 
 /**
  *  DigitalBox2019

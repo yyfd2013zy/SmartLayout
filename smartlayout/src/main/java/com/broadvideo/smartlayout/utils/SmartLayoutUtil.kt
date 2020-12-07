@@ -2,6 +2,7 @@ package com.broadvideo.smartlayout.utils
 
 import android.content.Context
 import com.broadvideo.smartlayout.callback.LogCallBack
+import com.broadvideo.smartlayout.data.bundle.BundleResponse
 import java.io.BufferedReader
 import java.io.FileInputStream
 import java.io.InputStreamReader
@@ -51,6 +52,19 @@ fun readLocalJson(context: Context?, fileName: String?): String? {
         val error = e.message
     }
     return jsonString
+}
+
+
+/**
+ * 校验节目数据是否正常
+ * @param bundleResponse
+ * @return
+ */
+public fun bundleDataIsOk(bundleResponse: BundleResponse?): Boolean {
+    if (bundleResponse == null|| bundleResponse.getBundles() == null||bundleResponse.getBundles().size === 0) {
+        return false
+    }
+    return true
 }
 
 var mlogCallBack:LogCallBack?=null

@@ -1,6 +1,6 @@
 package com.broadvideo.smartlayout.dispatcher
 
-import com.broadvideo.smartlayout.data.BundleJsonModule
+import com.broadvideo.smartlayout.data.bundle.BundleJsonModule
 import com.broadvideo.smartlayout.data.SchedulesResponse
 import com.broadvideo.smartlayout.listener.DispatcherListener
 
@@ -25,9 +25,6 @@ abstract class BaseDispatcher() {
         mDispatcherListener = dispatcherListener
     }
 
-    fun startWork(){
-        resultSchedulesDatas(false)
-    }
     /**
      * 处理节目数据
      * @param isNotifyData 是否是实时更新的数据
@@ -49,6 +46,9 @@ abstract class BaseDispatcher() {
      */
     abstract fun updateBundle()
 
+    /**
+     * 释放
+     */
     abstract fun  release()
 
 }
