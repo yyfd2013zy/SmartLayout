@@ -10,9 +10,13 @@ import com.broadvideo.smartlayout.data.SchedulesResponse
  *
  *  Describe:top level
  */
+var screenWidth = 0//屏幕宽
+var screenHeight = 0//屏幕高
 var schedulesWithTime: ArrayList<SchedulesResponse> ?= ArrayList() //按时间段播放的节目计划数据
 var nowPlayerBundleIds: ArrayList<Int> ?= ArrayList<Int>() //当前播放的节目ID集合
 var nowPlayerBundleJsons: ArrayList<String> ?= ArrayList<String>() //当前播放的节目描述文件集合
+var nowPlayBundleIndex = 0 //当前时间段，所播放节目的索引
+
 
 
 

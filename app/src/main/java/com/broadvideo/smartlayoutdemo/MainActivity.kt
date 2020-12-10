@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity(), LogCallBack {
 
     override fun onResume() {
         super.onResume()
+        smartLayoutCore.startWork()
     }
 
     override fun onDestroy() {

@@ -1,7 +1,9 @@
 package com.broadvideo.smartlayout.dispatcher
 
 import android.content.Context
+import com.alibaba.fastjson.JSON
 import com.broadvideo.smartlayout.data.bundle.BundleJsonModule
+import com.broadvideo.smartlayout.nowPlayBundleIndex
 import com.broadvideo.smartlayout.nowPlayerBundleIds
 import com.broadvideo.smartlayout.nowPlayerBundleJsons
 import com.broadvideo.smartlayout.schedulesWithTime
@@ -20,8 +22,8 @@ import com.broadvideo.smartlayout.utils.readLocalJson
 class CommonScheduleDispatcher constructor(context: Context) : BaseDispatcher() {
     val TAG = "CommonScheduleDispatcher"
     var mContext: Context? = null
-
     var mFilePath = ""
+    val Home_FLAG = "1"
 
     init {
         mlogCallBack?.logD(TAG, "CommonScheduleDispatcher init!")
@@ -36,14 +38,22 @@ class CommonScheduleDispatcher constructor(context: Context) : BaseDispatcher() 
         schedulesWithTime?.let {
             when (schedulesWithTime?.size) {
                 1 -> {
-                    mlogCallBack?.logD(TAG, "there is only one bundle schedule  in the  current period ")
+                    mlogCallBack?.logD(
+                        TAG,
+                        "there is only one bundle schedule  in the  current period "
+                    )
                     currentSchedules = schedulesWithTime?.get(0)
                     //对当前节目计划内的节目组进行赋值
                     nowPlayerBundleIds = currentSchedules?.getBundle_ids()
-                    mlogCallBack?.logD(TAG, " InstanceMemory.nowPlayerBundleIds.size = " + nowPlayerBundleIds?.size)
+                    mlogCallBack?.logD(
+                        TAG, " InstanceMemory.nowPlayerBundleIds.size = " + nowPlayerBundleIds?.size
+                    )
                     resultSchedulesBundleJsonData() //处理schedule内的bundle的json描述数据
-                    mlogCallBack?.logD(TAG, "通知创建节目计划，当前节目时段 start=" + currentSchedules?.getStart_time() + " end =" + currentSchedules?.getEnt_time()
-                            + " 节目ID集合：" + currentSchedules?.getBundle_ids().toString())
+                    mlogCallBack?.logD(
+                        TAG,
+                        "通知创建节目计划，当前节目时段 start=" + currentSchedules?.getStart_time() + " end =" + currentSchedules?.getEnt_time()
+                                + " 节目ID集合：" + currentSchedules?.getBundle_ids().toString()
+                    )
                     if (isNotifyData) {
                         mDispatcherListener?.upDateBundle(checkNowTimePlaySchedule()) //通知创建或更新节目
                     } else {
@@ -61,7 +71,18 @@ class CommonScheduleDispatcher constructor(context: Context) : BaseDispatcher() 
     }
 
     override fun checkNowTimePlaySchedule(): BundleJsonModule? {
-        TODO("Not yet implemented")
+        var bundleResponse: BundleJsonModule? = null
+        val json: String? = nowPlayerBundleJsons?.get(nowPlayBundleIndex)
+        for (b in JSON.parseArray(json, BundleJsonModule::class.java)) {
+            if (b.home_flag==Home_FLAG) { //主区域
+                //互动节目首页
+                mlogCallBack?.logD(TAG, "checkNowBundleData, now bundle json data: $json")
+                bundleResponse = b
+            }else{
+                mlogCallBack?.logD(TAG, "checkNowBundleData,error! not find home data!!")
+            }
+        }
+        return bundleResponse
     }
 
 
@@ -75,8 +96,6 @@ class CommonScheduleDispatcher constructor(context: Context) : BaseDispatcher() 
             nowPlayerBundleJsons?.add(json)
         }
     }
-
-
 
 
     override fun createBundle() {
