@@ -15,9 +15,10 @@ import com.broadvideo.smartlayout.screenWidth
  * User: Vinda
  * Date: 2020/12/9
  * Time: 18:03
- * Describe:Zone内的View的管理类，主要负责View的操作
+ * Describe:Zone内的View的管理类，主要负责View的操作add 到指定的界面上
  */
-class ZonesViewManager(var baseView: FrameLayout?, var context: Context) {
+class LayoutViewManager(var baseView: FrameLayout?, var context: Context) {
+  var zoneIds = mutableMapOf(1 to  1)//
 
   private var decordView: AbsoluteLayout? = null
 

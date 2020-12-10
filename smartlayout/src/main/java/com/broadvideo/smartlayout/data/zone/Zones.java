@@ -1,5 +1,7 @@
 package com.broadvideo.smartlayout.data.zone;
 
+import com.broadvideo.smartlayout.zone.view.ZonesView;
+
 import java.util.ArrayList;
 
 /**
@@ -33,6 +35,7 @@ public class Zones {
     public int touch_bundle_id;//int)跳转的节目id
     public ArrayList<Zonedtls> zonedtls;//当前播放资源定义
 
+    public ZonesView zoneView;//当前zone内的View
     public boolean needRefresh = false;//当前区域播放是否需要刷新
 
 

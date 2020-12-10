@@ -1,5 +1,8 @@
 package com.broadvideo.smartlayout.zone.create
 
+import com.broadvideo.smartlayout.data.bundle.BundleJsonModule
+import com.broadvideo.smartlayout.data.zone.Zones
+
 /**
  * Created by Android Studio.
  * User: Vinda
@@ -7,17 +10,28 @@ package com.broadvideo.smartlayout.zone.create
  * Time: 17:54
  * Describe:
  */
-abstract class ZoneCreate {
-    abstract fun createZone()
+abstract class ZoneCreate(zoneCreateListener: ZoneCreateListenerBuilder.() -> Unit) {
+
+
+    abstract fun createZone(bundleJsonModule: BundleJsonModule)
 
     abstract fun updateZone()
 
-    abstract fun removeZone()
 
-    /**
-     * 清空当前所有的Zone
-     */
-    fun clearAllZone(){
 
+    //lamda 回调的拓展函数
+    public lateinit var zoneCreateListener: ZoneCreateListenerBuilder
+
+    inner class ZoneCreateListenerBuilder {
+        internal var mSingleZoneCreateOverAction: ((Zones) -> Unit)? = null
+        internal var mAllZoneZoneCreateOverAction: (() -> Unit)? = null
+
+        fun SingleZoneCreateOver(action: (Zones) -> Unit) {
+            mSingleZoneCreateOverAction = action
+        }
+
+        fun AllZoneCreateOver(action: () -> Unit) {
+            mAllZoneZoneCreateOverAction = action
+        }
     }
 }

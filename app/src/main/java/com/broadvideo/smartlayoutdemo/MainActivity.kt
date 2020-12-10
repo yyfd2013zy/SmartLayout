@@ -1,5 +1,6 @@
 package com.broadvideo.smartlayoutdemo
 
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -26,9 +27,12 @@ class MainActivity : AppCompatActivity(), LogCallBack {
             .mFrameView(flMain)
             .dispatcher(CommonScheduleDispatcher(this))
             .logCallBack(this)
-            .build()
+            .build(this)
         getLifecycle().addObserver(smartLayoutCore)//注册生命周期监听器
+    }
 
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
     }
 
     override fun onResume() {
