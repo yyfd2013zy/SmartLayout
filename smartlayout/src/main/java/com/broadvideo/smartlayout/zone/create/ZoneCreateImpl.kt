@@ -1,5 +1,6 @@
 package com.broadvideo.smartlayout.zone.create
 
+import android.content.Context
 import com.broadvideo.smartlayout.data.bundle.BundleJsonModule
 import com.broadvideo.smartlayout.data.zone.Zones
 import com.broadvideo.smartlayout.zone.view.factory.ZonesViewFactory
@@ -15,13 +16,14 @@ import java.util.*
 class ZoneCreateImpl(zoneCreateListener: ZoneCreateListenerBuilder.() -> Unit) :
     ZoneCreate(zoneCreateListener) {
 
-    override fun createZone(bundleJsonModule: BundleJsonModule) {
+    override fun createZone(mcontext:Context,bundleJsonModule: BundleJsonModule) {
         var zones: ArrayList<Zones> = bundleJsonModule.zones //新的要绘制的zone区域集合
         for (zone in zones) {
-            zone.zoneView = ZonesViewFactory.createZonesView(zone.type)//区域内的view构建完毕，将该区域内的所有View赋值
+            zone.zoneView = ZonesViewFactory.createZonesView(mcontext,zone,bundleJsonModule)//区域内的view构建完毕，将该区域内的所有View赋值
+            zone
             zoneCreateListener.mSingleZoneCreateOverAction?.invoke(zone)
-
         }
+        zoneCreateListener.mAllZoneZoneCreateOverAction?.invoke()//所有Zone创建完成
     }
 
     override fun updateZone() {

@@ -1,6 +1,10 @@
 package com.broadvideo.smartlayout.zone.view.factory
 
-import com.broadvideo.smartlayout.ZONE_TEXT
+import android.content.Context
+import android.provider.ContactsContract
+import com.broadvideo.smartlayout.Constant
+import com.broadvideo.smartlayout.data.bundle.BundleJsonModule
+import com.broadvideo.smartlayout.data.zone.Zones
 import com.broadvideo.smartlayout.zone.view.ZonesView
 import com.broadvideo.smartlayout.zone.view.text.ZoneNormalTextView
 import java.lang.IllegalStateException
@@ -16,9 +20,9 @@ import java.lang.IllegalStateException
 class ZonesViewFactory {
 
     companion object AAA{
-        fun createZonesView(type: Int): ZonesView {
-            return when (type) {
-                ZONE_TEXT -> ZoneNormalTextView()
+        fun createZonesView(context: Context, zone: Zones, bundleJsonModule: BundleJsonModule): ZonesView {
+            return when (zone.type) {
+                Constant.ZONE_TEXT -> ZoneNormalTextView(context,zone,bundleJsonModule)
                 else -> throw IllegalStateException("createZonesView failed")
             }
         }

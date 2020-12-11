@@ -30,7 +30,7 @@ import com.broadvideo.smartlayout.zone.manager.LayoutViewManager
  */
 class SmartLayoutCore(context:Context,builder: Builder) : SmartLayoutLifeObserver, DispatcherListener,
         (ZoneCreate.ZoneCreateListenerBuilder) -> Unit {
-    var LOG_TAG: String? = null
+    var LOG_TAG: String = "SmartLayoutCore"
     var mContext = context
     var mDispatcher: BaseDispatcher? = null
     var screenOrientationChangeCallBack:ScreenOrientationChangeCallBack?=null
@@ -78,10 +78,10 @@ class SmartLayoutCore(context:Context,builder: Builder) : SmartLayoutLifeObserve
             if (checkCurrentThread()) {
                 mDispatcher?.resultSchedulesDatas(false)
             } else {
-                throw Exception("can not work at child thread!")
+                mlogCallBack?.logE(LOG_TAG,"can not work at child thread!")
             }
         } else {
-            throw Exception("check bundle data error!")
+            mlogCallBack?.logE(LOG_TAG,"bundleData Error")
         }
 
     }
@@ -113,7 +113,7 @@ class SmartLayoutCore(context:Context,builder: Builder) : SmartLayoutLifeObserve
         }
         layoutViewManager?.initDecordView(bundleJsonModule)
         //创建Zone
-        zoneCreate?.createZone(bundleJsonModule)
+        zoneCreate?.createZone(mContext,bundleJsonModule)
     }
 
     override fun upDateBundle(bundleJsonModule: BundleJsonModule?) {
@@ -150,7 +150,7 @@ class SmartLayoutCore(context:Context,builder: Builder) : SmartLayoutLifeObserve
         internal var dispatcher: BaseDispatcher? = null
         internal var logCallBack: LogCallBack? = null
         internal var mFrameView: FrameLayout? = null
-        internal var logTag: String? = null
+        internal var logTag: String = ""
         internal var bundleData: BundleResponse? = null
         internal var screenOrientationChangeCallBack:ScreenOrientationChangeCallBack?=null
         fun mFrameView(mFrameViewBuild: FrameLayout): Builder {
@@ -195,7 +195,7 @@ class SmartLayoutCore(context:Context,builder: Builder) : SmartLayoutLifeObserve
      */
     override fun invoke(p1: ZoneCreate.ZoneCreateListenerBuilder) {
         p1.SingleZoneCreateOver {zones ->
-
+            zonesManager?.addZones(zones)
         }
         p1.AllZoneCreateOver {
 

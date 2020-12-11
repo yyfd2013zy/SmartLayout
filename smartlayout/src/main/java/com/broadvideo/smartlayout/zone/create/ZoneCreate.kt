@@ -1,5 +1,6 @@
 package com.broadvideo.smartlayout.zone.create
 
+import android.content.Context
 import com.broadvideo.smartlayout.data.bundle.BundleJsonModule
 import com.broadvideo.smartlayout.data.zone.Zones
 
@@ -13,7 +14,7 @@ import com.broadvideo.smartlayout.data.zone.Zones
 abstract class ZoneCreate(zoneCreateListener: ZoneCreateListenerBuilder.() -> Unit) {
 
 
-    abstract fun createZone(bundleJsonModule: BundleJsonModule)
+    abstract fun createZone(context: Context, bundleJsonModule: BundleJsonModule)
 
     abstract fun updateZone()
 
