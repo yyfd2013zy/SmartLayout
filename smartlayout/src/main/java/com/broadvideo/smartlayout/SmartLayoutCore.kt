@@ -198,7 +198,12 @@ class SmartLayoutCore(context:Context,builder: Builder) : SmartLayoutLifeObserve
             zonesManager?.addZones(zones)
         }
         p1.AllZoneCreateOver {
-
+            //1.对zone进行排序
+            zonesManager?.zonesSort()
+            //2.将View添加到底层布局显示出来
+            layoutViewManager?.assembleView(zonesManager?.zonesList)
+            //3.通知各个播放控制类，开始播放
+            zonesManager?.startPlay()
         }
     }
 }

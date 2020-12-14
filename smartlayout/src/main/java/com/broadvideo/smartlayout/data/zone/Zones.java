@@ -1,5 +1,6 @@
 package com.broadvideo.smartlayout.data.zone;
 
+import com.broadvideo.smartlayout.zone.control.BaseZoneControl;
 import com.broadvideo.smartlayout.zone.view.ZonesView;
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class Zones {
     public ArrayList<Zonedtls> zonedtls;//当前播放资源定义
 
     public ZonesView zoneView;//当前zone内的View
-    //public ZonesPlayControl zonesPlayControl;//当前View 控制类
+    public BaseZoneControl zonePlayControl;//当前Zone播放控制类
 
     public boolean needRefresh = false;//当前区域播放是否需要刷新
 

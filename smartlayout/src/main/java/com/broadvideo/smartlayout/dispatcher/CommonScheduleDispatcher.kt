@@ -2,11 +2,11 @@ package com.broadvideo.smartlayout.dispatcher
 
 import android.content.Context
 import com.alibaba.fastjson.JSON
+import com.broadvideo.smartlayout.Constant.Companion.nowPlayBundleIndex
+import com.broadvideo.smartlayout.Constant.Companion.nowPlayerBundleIds
+import com.broadvideo.smartlayout.Constant.Companion.nowPlayerBundleJsons
+import com.broadvideo.smartlayout.Constant.Companion.schedulesWithTime
 import com.broadvideo.smartlayout.data.bundle.BundleJsonModule
-import com.broadvideo.smartlayout.nowPlayBundleIndex
-import com.broadvideo.smartlayout.nowPlayerBundleIds
-import com.broadvideo.smartlayout.nowPlayerBundleJsons
-import com.broadvideo.smartlayout.schedulesWithTime
 import com.broadvideo.smartlayout.utils.mlogCallBack
 import com.broadvideo.smartlayout.utils.readLocalJson
 

@@ -1,5 +1,7 @@
 package com.broadvideo.smartlayout.zone.view.media;
 
+import android.content.Context;
+
 import com.broadvideo.smartlayout.data.bundle.BundleJsonModule;
 import com.broadvideo.smartlayout.data.zone.Zones;
 import com.broadvideo.smartlayout.zone.view.ZonesView;
@@ -14,8 +16,8 @@ import com.broadvideo.smartlayout.zone.view.ZonesView;
  */
 public class ZoneMediaPlayView extends ZonesView {
 
-    public ZoneMediaPlayView(Zones zone, BundleJsonModule bundleJsonModule) {
-        super(zone, bundleJsonModule);
+    public ZoneMediaPlayView(Context context,Zones zone, BundleJsonModule bundleJsonModule) {
+        super(context,zone, bundleJsonModule);
     }
 
     @Override
